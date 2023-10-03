@@ -145,7 +145,18 @@ DetectClick2(&OutX, &OutY) {  ; <>
     return DetectPixels(L, &OutX, &OutY)
 }
 
-DetectPlay_L() {  ; ||
+DetectPlay_L() {  ; >
+    C := "0X3B4354"
+    D := IsNotWideScreen ? 0 : 96
+    L := [
+        [ScaleX(47 + D), ScaleX(30), C, 0, 0, 8],
+        [ScaleX(50 + D), ScaleX(32), C, 0, 0, 8],
+        [ScaleX(47 + D), ScaleX(35), C, 0, 0, 8],
+    ]
+    return L
+}
+
+DetectStop_L() {  ; ||
     C1 := "0X3B4354", C2 := "0XECE5D8"
     D := IsNotWideScreen ? 0 : 96
     L := [
@@ -157,8 +168,9 @@ DetectPlay_L() {  ; ||
 }
 
 DetectPlay(&OutX, &OutY) {  ; ||
-    static L := DetectPlay_L()
-    return DetectPixels(L, &OutX, &OutY)
+    static L1 := DetectPlay_L()
+    static L2 := DetectStop_L()
+    return DetectPixels(L1, &OutX, &OutY) or DetectPixels(L2, &OutX, &OutY)
 }
 
 DetectOption_L() {  ; ...
@@ -197,8 +209,11 @@ ClickDialogue() {
     if not WinActive(GenshinTitle) or GetKeyState("Alt")
         return
     UpdateWH
-    if DetectClick(&OutX, &OutY) and DetectPlay(&OutX, &OutY) {
-        SendGenshin("{Space}")
+    if DetectClick(&OutX, &OutY) {
+        if DetectPlay(&OutX, &OutY)
+            SendGenshin("{Space}")
+        else
+            ClickGenShin(OutX, OutY)
         return
     }
     if not Config_SkipClickOption_Enabled and DetectOption(&OutX, &OutY) {
