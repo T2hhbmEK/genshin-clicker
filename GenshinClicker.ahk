@@ -61,6 +61,8 @@ GenshinTitles := ["YuanShen.exe", "GenshinImpact.exe"]
 for T in GenshinTitles
     GroupAdd "Genshin", "ahk_exe" T
 GenshinTitle := "ahk_group Genshin"
+WinWait(GenshinTitle)
+WinGetClientPos(, , &W, &H, GenshinTitle)
 A_TrayMenu.Enable(TrayMenu_Enabler)
 
 ; Interact
@@ -101,7 +103,10 @@ ScaleYBottom720 := (Y) => H - 1 - ScaleX(719 - Y)
 
 UpdateWH() {
     global W, H
-    WinGetClientPos(, , &W, &H, GenshinTitle)
+    WinGetClientPos(, , &WW, &HH, GenshinTitle)
+    if WW != W or HH != H
+        Reload
+    W := WW, H := HH
     global Scale := Min(W / 1280, H / 720)
     global IsNotWideScreen := W < 2 * H
 }
