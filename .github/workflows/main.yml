@@ -1,0 +1,20 @@
+name: GitHub-Action-Ahk2Exe and softprops/action-gh-release
+on: push
+jobs:
+  Compile:
+    name: Compile
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Ahk2Exe
+        uses: nekocodeX/GitHub-Action-Ahk2Exe@main
+        with:
+          in: GenshinClicker.ahk
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: GenshinClicker.exe
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
