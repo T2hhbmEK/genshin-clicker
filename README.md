@@ -4,6 +4,10 @@ Automatic keyboard / mouse clicker for Genshin Impact.
 
 [简体中文](README.zh.md)
 
+## Download
+
+[Github Release](https://github.com/T2hhbmEK/genshin-clicker/releases/latest)
+
 ## Features
 
 - Automate dialogues. Auto select the last response. Free your hands through dialogues.

@@ -4,6 +4,10 @@
 
 [English](README.md)
 
+## 下载
+
+[Github Release](https://github.com/T2hhbmEK/genshin-clicker/releases/latest)
+
 ## 功能
 
 - 自动跳过对话。自动选择最后一个回复。解放双手。
