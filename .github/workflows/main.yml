@@ -1,4 +1,4 @@
-name: GitHub-Action-Ahk2Exe and softprops/action-gh-release
+name: Compile and Release
 on: push
 jobs:
   Compile:
@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Ahk2Exe
-        uses: nekocodeX/GitHub-Action-Ahk2Exe@main
+        uses: CCCC-L/Action-Ahk2Exe@main
         with:
           in: GenshinClicker.ahk
       - name: Release
