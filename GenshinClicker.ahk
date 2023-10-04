@@ -245,7 +245,9 @@ ToggleClickDialogue(ItemName := TrayMenu_Enabler, ItemPos?, MyMenu := A_TrayMenu
 
 ; Shortcuts
 #MaxThreadsPerHotkey 2
-~F10:: ToggleClickDialogue
+HotIfWinactive GenshinTitle
+~F10::ToggleClickDialogue
+HotIf
 F12:: Reload
 
 ; Start
