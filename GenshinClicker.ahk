@@ -215,7 +215,7 @@ ClickDialogue() {
         return
     UpdateWH
     if DetectClick(&OutX, &OutY) {
-        if DetectPlay(&OutX, &OutY)
+        if DetectPlay(&OutXX, &OutYY)
             SendGenshin("{Space}")
         else
             ClickGenShin(OutX, OutY)
