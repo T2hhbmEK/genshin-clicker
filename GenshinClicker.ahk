@@ -77,7 +77,7 @@ ClickGenShin(X, Y) {
         return
     MouseGetPos(&XX, &YY)
     MouseClick(, X, Y)
-    Sleep 10
+    Sleep 50
     MouseMove(XX, YY)
 }
 
