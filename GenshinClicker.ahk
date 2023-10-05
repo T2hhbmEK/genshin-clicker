@@ -178,9 +178,8 @@ DetectPlay(&OutX, &OutY) {  ; ||
     return DetectPixels(L1, &OutX, &OutY) or DetectPixels(L2, &OutX, &OutY)
 }
 
-DetectOption_L() {  ; ...
-    Y := IsNotWideScreen ? 535 : 525
-    Y := H - ScaleX(720 - Y)
+DetectOption_L(NthLast := 1) {  ; ...
+    Y := ScaleYBottom720((IsNotWideScreen ? 535 : 525) - (NthLast - 1) * 50)
     D := IsNotWideScreen ? 0 : 92
     DiffX := Scale * 2
     L := [
@@ -194,8 +193,9 @@ DetectOption_L() {  ; ...
 }
 
 DetectOption(&OutX, &OutY) {  ; ...
-    static L := DetectOption_L()
-    return DetectPixels(L, &OutX, &OutY)
+    static L1 := DetectOption_L(1)
+    static L2 := DetectOption_L(2)
+    return DetectPixels(L2, &OutX, &OutY) or DetectPixels(L1, &OutX, &OutY)
 }
 
 
