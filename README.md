@@ -10,7 +10,7 @@ Automatic keyboard / mouse clicker for Genshin Impact.
 
 ## Features
 
-- Automate dialogues. Auto select the last response. Free your hands through dialogues.
+- Automate dialogues. Auto select the 2nd last response if possible. Free your hands through dialogues.
 - Multi-languages: English, Chinese.
 - Support dynamic game resolutions and aspect ratios.
 - Support windowed.
