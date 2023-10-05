@@ -14,7 +14,7 @@ jobs:
       - name: Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: GenshinClicker-x86.zip
+          name: GenshinClicker-x86
           path: GenshinClicker.exe
           retention-days: 90 # max
       - name: Release
