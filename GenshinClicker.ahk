@@ -193,9 +193,14 @@ DetectOption_L(NthLast := 1) {  ; ...
 }
 
 DetectOption(&OutX, &OutY) {  ; ...
-    static L1 := DetectOption_L(1)
-    static L2 := DetectOption_L(2)
-    return DetectPixels(L2, &OutX, &OutY) or DetectPixels(L1, &OutX, &OutY)
+    NthLast := 1
+    Ret := false
+    while DetectPixels(DetectOption_L(NthLast), &X, &Y) {
+        OutX := X, OutY := Y
+        NthLast += 1
+        Ret := true
+    }
+    return Ret
 }
 
 
