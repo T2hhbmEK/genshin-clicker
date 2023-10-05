@@ -6,15 +6,15 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Ahk2Exe
         uses: CCCC-L/Action-Ahk2Exe@main
         with:
           in: GenshinClicker.ahk
-      - name: Archive production artifacts
+      - name: Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: x86-binary
+          name: GenshinClicker-x86.zip
           path: GenshinClicker.exe
           retention-days: 90 # max
       - name: Release
