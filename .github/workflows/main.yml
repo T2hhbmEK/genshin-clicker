@@ -11,10 +11,11 @@ jobs:
         uses: CCCC-L/Action-Ahk2Exe@main
         with:
           in: GenshinClicker.ahk
+          base: 64
       - name: Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: GenshinClicker-x86
+          name: GenshinClicker-x86-64
           path: GenshinClicker.exe
           retention-days: 90 # max
       - name: Release
