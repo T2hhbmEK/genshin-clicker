@@ -182,7 +182,7 @@ DetectOption_L() {  ; ...
     Y := IsNotWideScreen ? 535 : 525
     Y := H - ScaleX(720 - Y)
     D := IsNotWideScreen ? 0 : 92
-    DiffX := Scale * 1
+    DiffX := Scale * 2
     L := [
         [ScaleXRight1280(860 - D), Y, "0x5f676f", DiffX, DiffX, 32],
         [ScaleXRight1280(863 - D), Y, "0XFFFFFF", DiffX, DiffX, 2],
