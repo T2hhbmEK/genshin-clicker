@@ -118,8 +118,8 @@ DetectPixels(L, &OutX, &OutY) {
     Ret := true
     for IT in L {
         ; X Y ColorID DiffX DIffY DiffC
-        X := Round(IT[1]), Y := Round(IT[2]), ColorID := IT[3], DiffX := Ceil(IT[4]), DiffY := Ceil(IT[5]), DiffC := IT[6]
-        Ret := Ret and PixelSearch(&OutX, &OutY, X - DiffX, Y - DiffY, X + DiffX, Y + DiffY, ColorID, DiffC)
+        X := IT[1], Y := IT[2], ColorID := IT[3], DiffX := IT[4], DiffY := IT[5], DiffC := IT[6]
+        Ret := Ret and PixelSearch(&OutX, &OutY, Floor(X - DiffX), Floor(Y - DiffY), Ceil(X + DiffX), Ceil(Y + DiffY), ColorID, DiffC)
     }
     if Ret
         MyToolTip "!", OutX + 1, OutY + 1
@@ -178,29 +178,35 @@ DetectPlay(&OutX, &OutY) {  ; ||
     return DetectPixels(L1, &OutX, &OutY) or DetectPixels(L2, &OutX, &OutY)
 }
 
-DetectOption_L(NthLast := 1) {  ; ...
-    Y := ScaleYBottom720((IsNotWideScreen ? 535 : 525) - (NthLast - 1) * 50)
+DetectOption_L(NthLast := 1, OffsetY := 0) {  ; ...
+    Y := ScaleYBottom720((IsNotWideScreen ? 535 : 525) + OffsetY - (NthLast - 1) * 50)
     D := IsNotWideScreen ? 0 : 92
-    DiffX := Scale * 2
+    Diff1 := Scale * 1
+    Diff2 := Scale * 2
     L := [
-        [ScaleXRight1280(860 - D), Y, "0x5f676f", DiffX, DiffX, 32],
-        [ScaleXRight1280(863 - D), Y, "0XFFFFFF", DiffX, DiffX, 2],
-        [ScaleXRight1280(866 - D), Y, "0x606870", DiffX, DiffX, 32],
-        [ScaleXRight1280(869 - D), Y, "0xffffff", DiffX, DiffX, 2],
-        [ScaleXRight1280(872 - D), Y, "0x606971", DiffX, DiffX, 32],
+        [ScaleXRight1280(860 - D), Y, "0x5f676f", Diff2, 0, 16],
+        [ScaleXRight1280(863 - D), Y, "0XFFFFFF", Diff1, 0, 2],
+        [ScaleXRight1280(866 - D), Y, "0x606870", Diff2, 0, 16],
+        [ScaleXRight1280(869 - D), Y, "0xffffff", Diff1, 0, 2],
+        [ScaleXRight1280(872 - D), Y, "0x606971", Diff2, 0, 16],
     ]
+    ; MyToolTip "?", L[1][1], L[1][2]
     return L
 }
 
-DetectOption(&OutX, &OutY) {  ; ...
+DetectOptionOffset(&OutX, &OutY, OffsetY := 0) {  ; ...
     NthLast := 1
     Ret := false
-    while DetectPixels(DetectOption_L(NthLast), &X, &Y) {
+    while DetectPixels(DetectOption_L(NthLast, OffsetY), &X, &Y) {
         OutX := X, OutY := Y
         NthLast += 1
         Ret := true
     }
     return Ret
+}
+
+DetectOption(&OutX, &OutY) {
+    return DetectOptionOffset(&OutX, &OutY, 0) or DetectOptionOffset(&OutX, &OutY, 3)
 }
 
 
