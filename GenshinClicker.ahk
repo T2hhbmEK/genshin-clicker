@@ -100,6 +100,7 @@ ToggleToolTip(ItemName := TrayMenu_ToolTip, ItemPos?, MyMenu := A_TrayMenu) {
 ScaleX := (X, S := Scale) => (X + 0.5) * S - 0.5
 ScaleXRight1280 := (X) => W - 1 - ScaleX(1279 - X)
 ScaleYBottom720 := (Y) => H - 1 - ScaleX(719 - Y)
+ScaleXCenter1280 := (X) => (W - 1) / 2 + Scale * (X - 639.5)
 
 UpdateWH() {
     global W, H
@@ -180,17 +181,17 @@ DetectPlay(&OutX, &OutY) {  ; ||
 
 DetectOption_L(NthLast := 1, OffsetY := 0) {  ; ...
     Y := ScaleYBottom720((IsNotWideScreen ? 535 : 525) + OffsetY - (NthLast - 1) * 50)
-    D := IsNotWideScreen ? 0 : 92
+    X := IsNotWideScreen ? 860 : 0.809 * (W / Scale) - 236.2
     Diff1 := Scale * 1
     Diff2 := Scale * 2
     L := [
-        [ScaleXRight1280(860 - D), Y, "0x5f676f", Diff2, 0, 16],
-        [ScaleXRight1280(863 - D), Y, "0XFFFFFF", Diff1, 0, 2],
-        [ScaleXRight1280(866 - D), Y, "0x606870", Diff2, 0, 16],
-        [ScaleXRight1280(869 - D), Y, "0xffffff", Diff1, 0, 2],
-        [ScaleXRight1280(872 - D), Y, "0x606971", Diff2, 0, 16],
+        [ScaleX(X), Y, "0x5f676f", Diff2, 0, 16],
+        [ScaleX(X + 3), Y, "0XFFFFFF", Diff1, 0, 2],
+        [ScaleX(X + 6), Y, "0x606870", Diff2, 0, 16],
+        [ScaleX(X + 9), Y, "0xffffff", Diff1, 0, 2],
+        [ScaleX(X + 12), Y, "0x606971", Diff2, 0, 16],
     ]
-    ; MyToolTip "?", L[1][1], L[1][2]
+    ; MyToolTip "?", L[1][1], L[1][2] + 10, 2
     return L
 }
 
