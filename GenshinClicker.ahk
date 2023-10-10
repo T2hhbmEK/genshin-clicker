@@ -110,7 +110,7 @@ UpdateWH() {
     W := WW, H := HH
     global Scale := Min(W / 1280, H / 720)
     global IsNotWideScreen := W < 2 * H
-}
+    }
 
 ; Detect
 DetectPixels(L, &OutX, &OutY) {
@@ -259,6 +259,8 @@ ToggleClickDialogue(ItemName := TrayMenu_Enabler, ItemPos?, MyMenu := A_TrayMenu
 #MaxThreadsPerHotkey 2
 HotIfWinactive GenshinTitle
 Hotkey "~F10", (*) => ToggleClickDialogue()
+Hotkey "XButton2", (*) => Send("T")
+Hotkey "XButton1", (*) => Send("{F1}")
 HotIf
 F12:: Reload
 
