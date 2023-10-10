@@ -19,7 +19,7 @@ LANG := LCID[A_Language]  ; Get the name of the system's default language.
 ; Tray
 TrayMenu_GenshinClicker := "Genshin Auto Clicker"
 TrayMenu_Help := "Help"
-TrayMenu_HelpMsg := "Shortcuts`n`nF10`tToggle`nF12`tReload`nAlt`tHold to suspend"
+TrayMenu_HelpMsg := "Shortcuts`n`nF10`t`t`tToggle`nF12`t`t`tReload`nAlt`t`t`tHold to suspend`nMouse Side Button1`tSend F1`nMouse Side Button2`tSend T"
 TrayMenu_Enabler := "Enable/Disable (F10)"
 TrayMenu_SkipClickOption := "Manual Dialogue Response"
 TrayMenu_ToolTip := "Show ToolTip"
@@ -28,7 +28,7 @@ TrayMenu_Exit := "E&xit"
 if RegExMatch(LANG, "^Chinese") {
     TrayMenu_GenshinClicker := "原神自动连点"
     TrayMenu_Help := "帮助"
-    TrayMenu_HelpMsg := "快捷键`n`nF10`t开关`nF12`t重启脚本`nAlt`t长按暂停脚本"
+    TrayMenu_HelpMsg := "快捷键`n`nF10`t`t开关`nF12`t`t重启脚本`nAlt`t`t长按暂停脚本`n鼠标侧键1`t发送 F1`n鼠标侧键2`t发送 T"
     TrayMenu_Enabler := "开关 (F10)"
     TrayMenu_SkipClickOption := "手动回复对话"
     TrayMenu_ToolTip := "显示提示"

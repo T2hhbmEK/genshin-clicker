@@ -40,6 +40,8 @@ Shortcuts:
 | F10 | Toggle auto clicker |
 | F12 | Restart |
 | Alt | Hold to temporary disable |
+| Mouse Side Button1 | Send F1 |
+| Mouse Side Button2 | Send T |
 
 ## Related Projects
 
