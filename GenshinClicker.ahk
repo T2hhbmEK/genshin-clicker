@@ -266,3 +266,7 @@ F12:: Reload
 
 ; Start
 ToggleClickDialogue
+
+; Reload if not running
+WinWaitClose(GenshinTitle)
+Reload
