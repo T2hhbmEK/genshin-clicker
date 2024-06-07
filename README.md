@@ -1,5 +1,8 @@
 # Genshin Clicker
 
+This project is archived because of this fantastic project [Better GI](https://github.com/babalae/better-genshin-impact).
+Better GI not only can auto click dialogs for you, but also can automate other tedious jobs in Genshin for you. Please try it if you can.
+
 Automatic keyboard / mouse clicker for Genshin Impact.
 
 [简体中文](README.zh.md)
